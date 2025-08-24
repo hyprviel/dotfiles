@@ -1,0 +1,54 @@
+{
+	"layer": "top",
+	"position": "top",
+	"modules-left": [
+		"hyprland/workspaces",
+        "hyprland/submap"
+	],
+	"modules-center": [
+		"hyprland/window"
+	],
+	"modules-right": [
+        "clock",
+		"pulseaudio",
+		"battery",
+	],
+    "hyprland/workspaces": {
+	    "format": "{icon}",
+	    "format-icons": {
+		    "active": "",
+		    "default": ""
+	    },
+	    "persistent-workspaces": {
+		    "eDP-1": 10,
+            "HDMI-A-1": 0
+	    }
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "rewrite" : {
+            "": "Hyprland"
+        }
+    },
+	"clock": {
+		"format": " {:%d/%m %I:%M %p}",
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-icons": [
+            "󰪞", "󰪟", "󰪠", "󰪡",
+            "󰪢", "󰪣", "󰪤", "󰪥"
+        ],
+        "format-muted": "󱃓 {volume}%"
+	},
+	"battery": {
+		"format": "{icon} {capacity}%",
+		"format-icons": ["", "", "", "", ""],
+		"interval": 10,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		}
+	}
+}

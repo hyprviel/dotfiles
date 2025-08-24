@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[user]
+	name = hyprviel
+	email = hyprviel@users.noreply.github.com
+[core]
+	pager = less
