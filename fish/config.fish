@@ -4,27 +4,61 @@ function fish_greeting
 end
 
 # printf "%s@%s" ($USER) ($hostname)
+# function fish_prompt
+#     set stat $status
+# 
+#     if test $stat -eq 0
+#         printf "%s%s " (set_color cyan) (prompt_pwd)
+#         if test -d .git
+#             set branch git rev-parse --abbrev-ref HEAD
+#             printf "%s%s " (set_color brblue) ($branch)
+#         end
+#         printf "%s %s" (set_color green) (set_color normal)
+#     else
+#         printf "%s%s " (set_color cyan) (prompt_pwd)
+#         if test -d .git
+#             set branch git rev-parse --abbrev-ref HEAD
+#             printf "%s%s " (set_color brblue) ($branch)
+#         end
+#         printf "%s[%s]  %s" (set_color red) (echo $stat) (set_color normal)
+#     end
+# end
 function fish_prompt
     set stat $status
 
-    if test $stat -eq 0
-        printf "%s%s " (set_color cyan) (prompt_pwd)
-        if test -d .git
-            set branch git rev-parse --abbrev-ref HEAD
-            printf "%s%s " (set_color brblue) ($branch)
-        end
-        printf "%s %s" (set_color green) (set_color normal)
-    else
-        printf "%s%s " (set_color cyan) (prompt_pwd)
-        if test -d .git
-            set branch git rev-parse --abbrev-ref HEAD
-            printf "%s%s " (set_color brblue) ($branch)
-        end
-        printf "%s[%s]  %s" (set_color red) (echo $stat) (set_color normal)
+    set_color green
+    echo -n $USER
+    
+    set_color normal
+    echo -n " 󰣇 "
+    
+    set_color green
+    echo -n $hostname
+    
+    set_color normal
+    echo -n "  "
+    
+    set_color blue
+    echo -n (prompt_pwd)
+    
+    # git rahhh
+    if test -d .git
+        set branch git rev-parse --abbrev-ref HEAD
+        printf " %s %s%s " (set_color normal) (set_color yellow) ($branch)
     end
+
+    if test $stat -ne 0
+        set_color red
+        printf " [%s]" $stat
+    end
+    
+    set_color normal
+    echo -e "\n "
 end
 
-function fish_right_prompt; end
+function fish_right_prompt;
+    
+end
 
 # colors
 set -U fish_color_cwd         cyan
@@ -44,7 +78,7 @@ set -U fish_color_end         brwhite
 
 set -U fish_color_autosuggestion 555
 
-# aliases
+# abbrevations
 abbr cls "clear"
 abbr ls "ls -a"
 abbr rm "rm -rf"
