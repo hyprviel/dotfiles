@@ -1,0 +1,7 @@
+configuration {
+    font: "Roboto Nerd Font 13";
+    show-icons: true;
+    drun-display-format: "{name}";
+}
+
+@theme "gruvbox-dark"

@@ -14,11 +14,11 @@
 		"battery",
 	],
     "hyprland/workspaces": {
-	    "format": "{icon}",
-	    "format-icons": {
-		    "active": "",
-		    "default": ""
-	    },
+	    "format": "{name}",
+	    // "format-icons": {
+		//     "active": "",
+		//     "default": ""
+	    // },
 	    "persistent-workspaces": {
 		    "eDP-1": 10,
             "HDMI-A-1": 0

@@ -1,10 +1,27 @@
 return {
+    { "morhetz/gruvbox" }, -- peak colorscheme
+    {
+        "nvim-tree/nvim-tree.lua",
+        config = function()
+            require("nvim-tree").setup()
+        end
+    },
+    { 
+        "nvim-lualine/lualine.nvim",
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        keys = {
+            { "<leader>e", "<cmd>NvimTreeToggle<cr>" }
+        },
+        config = function()
+             require('lualine').setup()
+        end
+    },
     {
         "nvim-treesitter/nvim-treesitter",
         branch = 'master', lazy = false, build = ":TSUpdate",
         config = function()
             require('nvim-treesitter.configs').setup({
-                ensure_installed = { "c", "cpp", "lua", "markdown", "markdown_inline" },
+                ensure_installed = { "c", "cpp", "rust", "lua", "markdown", "markdown_inline" },
                 sync_install = false,
                 auto_install = true,
 
@@ -16,13 +33,6 @@ return {
         end
     },
     {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    {
         "nvim-telescope/telescope.nvim", tag = "0.1.8",
         dependencies = { "nvim-lua/plenary.nvim" },
         keys = {
@@ -32,4 +42,5 @@ return {
             { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
         },
     }
+
 }
